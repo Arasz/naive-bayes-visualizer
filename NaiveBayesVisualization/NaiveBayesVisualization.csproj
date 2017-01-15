@@ -80,6 +80,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\CsvDataReader.cs" />
+    <Compile Include="Data\ExperimentData.cs" />
     <Compile Include="NaiveBayesVisualizerMainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +101,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -116,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="License-LGPL.txt" />
+    <None Include="Resources\1484516837_BT_folder_file_open.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Accord.3.4.0\build\Accord.targets" Condition="Exists('packages\Accord.3.4.0\build\Accord.targets')" />

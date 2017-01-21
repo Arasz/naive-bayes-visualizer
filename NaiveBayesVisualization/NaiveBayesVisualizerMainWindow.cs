@@ -16,14 +16,11 @@ namespace NaiveBayesVisualization
         private void LoadDataFromFile(object sender, EventArgs e)
         {
             var result = openDataFileDialog.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                var dataReader = new CsvDataReader(openDataFileDialog.FileName);
-                _experimentData = new ExperimentData(dataReader);
-                _experimentData.Load();
+            if (result != DialogResult.OK) return;
 
-                learningDataGridView.DataSource = _experimentData.TrainData;
-            }
+            var dataReader = new CsvDataReader(openDataFileDialog.FileName);
+            _experimentData = new ExperimentData(dataReader);
+            learningDataGridView.DataSource = _experimentData.TrainData;
         }
     }
 }

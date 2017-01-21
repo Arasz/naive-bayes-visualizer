@@ -41,7 +41,7 @@ namespace NaiveBayesVisualization.Data
 
             Codebook = new Codification(TrainData, ColumnLabels.ToArray());
             var symbols = Codebook.Apply(TrainData);
-            var inputs = symbols.ToArray<int>(ColumnLabels.GetRange(0, ColumnLabels.Count-2).ToArray());
+            var inputs = symbols.ToArray<int>(ColumnLabels.GetRange(0, ColumnLabels.Count-1).ToArray());
             var outputs = symbols.ToArray<int>(ColumnLabels[ColumnLabels.Count-1]);
 
             // Create a new Naive Bayes learning

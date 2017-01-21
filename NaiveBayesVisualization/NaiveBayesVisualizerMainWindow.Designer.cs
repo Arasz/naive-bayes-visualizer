@@ -31,19 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NaiveBayesVisualizerMainWindow));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.loadDataButton = new System.Windows.Forms.ToolStripButton();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.DistributionsPage = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.DistributionPanel = new System.Windows.Forms.Panel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.openDataFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.learningDataGridView = new System.Windows.Forms.DataGridView();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.toolStrip.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.DistributionsPage.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.learningDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -52,7 +49,7 @@
             this.loadDataButton});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(902, 25);
+            this.toolStrip.Size = new System.Drawing.Size(909, 25);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "Tool strip";
             // 
@@ -66,35 +63,46 @@
             this.loadDataButton.Text = "toolStripButton1";
             this.loadDataButton.Click += new System.EventHandler(this.LoadDataFromFile);
             // 
-            // tabControl1
+            // DistributionsPage
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 25);
-            this.tabControl1.Multiline = true;
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(902, 433);
-            this.tabControl1.TabIndex = 1;
+            this.DistributionsPage.Controls.Add(this.tabPage1);
+            this.DistributionsPage.Controls.Add(this.tabPage2);
+            this.DistributionsPage.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.DistributionsPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DistributionsPage.Location = new System.Drawing.Point(0, 25);
+            this.DistributionsPage.Multiline = true;
+            this.DistributionsPage.Name = "DistributionsPage";
+            this.DistributionsPage.SelectedIndex = 0;
+            this.DistributionsPage.Size = new System.Drawing.Size(909, 592);
+            this.DistributionsPage.TabIndex = 1;
+            this.DistributionsPage.Tag = "";
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.splitContainer1);
+            this.tabPage1.Controls.Add(this.DistributionPanel);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(894, 407);
+            this.tabPage1.Size = new System.Drawing.Size(901, 566);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // DistributionPanel
+            // 
+            this.DistributionPanel.AutoScroll = true;
+            this.DistributionPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.DistributionPanel.Location = new System.Drawing.Point(0, 0);
+            this.DistributionPanel.Name = "DistributionPanel";
+            this.DistributionPanel.Size = new System.Drawing.Size(901, 566);
+            this.DistributionPanel.TabIndex = 0;
             // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(894, 407);
+            this.tabPage2.Size = new System.Drawing.Size(901, 475);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -106,48 +114,22 @@
             this.openDataFileDialog.Filter = "CSV files|*.csv";
             this.openDataFileDialog.InitialDirectory = "../../Data/";
             // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.learningDataGridView);
-            this.splitContainer1.Size = new System.Drawing.Size(888, 401);
-            this.splitContainer1.SplitterDistance = 422;
-            this.splitContainer1.TabIndex = 0;
-            // 
-            // learningDataGridView
-            // 
-            this.learningDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.learningDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.learningDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.learningDataGridView.Name = "learningDataGridView";
-            this.learningDataGridView.Size = new System.Drawing.Size(422, 401);
-            this.learningDataGridView.TabIndex = 0;
-            // 
             // NaiveBayesVisualizerMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(902, 458);
-            this.Controls.Add(this.tabControl1);
+            this.ClientSize = new System.Drawing.Size(909, 617);
+            this.Controls.Add(this.DistributionsPage);
             this.Controls.Add(this.toolStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NaiveBayesVisualizerMainWindow";
             this.Text = "NaiveBayesVisualizer";
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.DistributionsPage.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.learningDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,13 +138,14 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl DistributionsPage;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ToolStripButton loadDataButton;
         private System.Windows.Forms.OpenFileDialog openDataFileDialog;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.DataGridView learningDataGridView;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Panel DistributionPanel;
     }
 }
 

@@ -81,9 +81,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BigChartFactory.cs" />
     <Compile Include="Data\CsvDataReader.cs" />
     <Compile Include="Data\ExperimentData.cs" />
-    <Compile Include="CustomChartFactory.cs" />
+    <Compile Include="MatrixChartFactory.cs" />
     <Compile Include="DistributionTableFactory.cs" />
     <Compile Include="NaiveBayesVisualizerMainWindow.cs">
       <SubType>Form</SubType>

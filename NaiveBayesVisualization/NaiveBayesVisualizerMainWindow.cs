@@ -24,12 +24,9 @@ namespace NaiveBayesVisualization
             _experimentData = new ExperimentData(dataReader);
             var rowsCount = _experimentData.ColumnLabels.Count - 1;
 
-            var priorisChart = new CustomChartFactory(
+            var priorisChart = new BigChartFactory(
                 _experimentData.Codebook.Columns[rowsCount].Values,
                 _experimentData.Priors).Chart;
-            priorisChart.Legends.Add(new Legend());
-            priorisChart.Width = 300;
-            priorisChart.Height = 100;
             PriorsPanel.Controls.Add(priorisChart);
 
             DistributionPanel.Controls.Add(

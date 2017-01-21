@@ -25,7 +25,7 @@ namespace NaiveBayesVisualization
                 {
                     Table.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
                     var chart =
-                        new CustomChartFactory(columns[i].Values,
+                        new MatrixChartFactory(columns[i].Values,
                             distributions[j, i]).Chart;
                     Table.Controls.Add(chart, j, i);
                     if (j == numColumns - 1)

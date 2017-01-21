@@ -17,9 +17,10 @@ namespace NaiveBayesVisualization.Data
         public Codification Codebook { get; private set; }
         public List<string> ColumnLabels { get; }
         private NaiveBayes _naiveBayes;
-
         public double[,][] Distributions => _naiveBayes.Distributions;
         public double[] Priors => _naiveBayes.Priors;
+
+        private string[] _lastLine;
 
 
         public ExperimentData(CsvDataReader dataReader, int loadedDataSize = int.MaxValue)
@@ -44,8 +45,8 @@ namespace NaiveBayesVisualization.Data
 
             Codebook = new Codification(TrainData, ColumnLabels.ToArray());
             var symbols = Codebook.Apply(TrainData);
-            var inputs = symbols.ToArray<int>(ColumnLabels.GetRange(0, ColumnLabels.Count-1).ToArray());
-            var outputs = symbols.ToArray<int>(ColumnLabels[ColumnLabels.Count-1]);
+            var inputs = symbols.ToArray<int>(ColumnLabels.GetRange(0, ColumnLabels.Count - 1).ToArray());
+            var outputs = symbols.ToArray<int>(ColumnLabels[ColumnLabels.Count - 1]);
 
             // Create a new Naive Bayes learning
             var learner = new NaiveBayesLearning();
@@ -54,9 +55,9 @@ namespace NaiveBayesVisualization.Data
             _naiveBayes = learner.Learn(inputs, outputs);
         }
 
-        public double[] Predict(int[] testData)
+        public double[] Predict(string[] testData)
         {
-            return _naiveBayes.Probabilities(testData); 
+            return _naiveBayes.Probabilities(TranslateDecisions(testData));
         }
 
         private void CalculateDataSetSizes(IList<string[]> dataLines)
@@ -74,6 +75,23 @@ namespace NaiveBayesVisualization.Data
             }
         }
 
-        private static void InsertRowToTable(string[] dataLine, DataTable dataTable) => dataTable.Rows.Add(dataLine);
+        private void InsertRowToTable(string[] dataLine, DataTable dataTable)
+        {
+            dataTable.Rows.Add
+            (
+                dataLine
+            );
+            _lastLine = dataLine;
+        }
+
+        public int[] TranslateDecisions(string[] decisions)
+        {
+            return Codebook.Translate(decisions);
+        }
+
+        public string[] GenerateTestDecisions()
+        {
+            return _lastLine;
+        }
     }
 }

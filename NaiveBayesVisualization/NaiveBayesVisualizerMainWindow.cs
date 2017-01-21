@@ -9,7 +9,7 @@ namespace NaiveBayesVisualization
     {
         private ExperimentData _experimentData;
         private int _rowsCount;
-        private int[] _decisions;
+        private string[] _decisions;
         private TableLayoutPanel _predictionsTable;
 
         public NaiveBayesVisualizerMainWindow()
@@ -26,7 +26,7 @@ namespace NaiveBayesVisualization
             var dataReader = new CsvDataReader(openDataFileDialog.FileName);
             _experimentData = new ExperimentData(dataReader);
             _rowsCount = _experimentData.ColumnLabels.Count - 1;
-            _decisions = new int[_rowsCount];
+            _decisions = _experimentData.GenerateTestDecisions();
 
             var priorisChart = new BigChartFactory(
                 _experimentData.Codebook.Columns[_rowsCount].Values,
@@ -55,11 +55,11 @@ namespace NaiveBayesVisualization
         {
 
             PredictionSplitContainer.Panel1.Controls.Remove(_predictionsTable);
-
+            var decisions = _experimentData.TranslateDecisions(_decisions);
             _predictionsTable = new PredictionTableFactory(
                 _experimentData.Codebook.Columns,
                 _experimentData.Distributions,
-                _decisions,
+                decisions,
                 _rowsCount
             ).Table;
             _predictionsTable.Location = new Point(160, 0);
@@ -79,7 +79,7 @@ namespace NaiveBayesVisualization
         {
             var senderCombo = (ComboBox) sender;
             var senderIndex = int.Parse(senderCombo.Tag + "");
-            _decisions[senderIndex] = senderCombo.SelectedIndex;
+            _decisions[senderIndex] = senderCombo.SelectedItem.ToString();
             LoadPredictions();
         }
     }

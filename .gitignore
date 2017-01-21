@@ -275,4 +275,5 @@ __pycache__/
 # !tools/packages.config
 
 # Data folder
-Data
+Data/
+\!NaiveBayesVisualization/Data

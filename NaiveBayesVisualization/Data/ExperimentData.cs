@@ -16,7 +16,10 @@ namespace NaiveBayesVisualization.Data
         public DataTable TrainData { get; }
         public Codification Codebook { get; private set; }
         public List<string> ColumnLabels { get; }
-        public NaiveBayes NaiveBayes { get; private set; }
+        private NaiveBayes _naiveBayes;
+
+        public double[,][] Distributions => _naiveBayes.Distributions;
+        public double[] Priors => _naiveBayes.Priors;
 
 
         public ExperimentData(CsvDataReader dataReader, int loadedDataSize = int.MaxValue)
@@ -48,7 +51,7 @@ namespace NaiveBayesVisualization.Data
             var learner = new NaiveBayesLearning();
 
             // Learn a Naive Bayes model from the examples
-            NaiveBayes = learner.Learn(inputs, outputs);
+            _naiveBayes = learner.Learn(inputs, outputs);
         }
 
         private void Predict(NaiveBayes nb, string[] testData)

@@ -83,6 +83,8 @@
   <ItemGroup>
     <Compile Include="Data\CsvDataReader.cs" />
     <Compile Include="Data\ExperimentData.cs" />
+    <Compile Include="CustomChartFactory.cs" />
+    <Compile Include="DistributionTableFactory.cs" />
     <Compile Include="NaiveBayesVisualizerMainWindow.cs">
       <SubType>Form</SubType>
     </Compile>

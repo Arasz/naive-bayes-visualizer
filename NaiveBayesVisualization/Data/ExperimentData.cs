@@ -54,22 +54,9 @@ namespace NaiveBayesVisualization.Data
             _naiveBayes = learner.Learn(inputs, outputs);
         }
 
-        private void Predict(NaiveBayes nb, string[] testData)
+        public double[] Predict(int[] testData)
         {
-            // Consider we would like to know whether one should play tennis at a
-            // sunny, cool, humid and windy day. Let us first encode this instance
-            var instance = Codebook.Translate(testData);
-
-            // Let us obtain the numeric output that represents the answer
-            var c = nb.Decide(instance); // answer will be 0
-
-            // Now let us convert the numeric output to an actual "Yes" or "No" answer
-            var result = Codebook.Translate(ColumnLabels[ColumnLabels.Count - 1], c); // answer will be "No"
-
-            // We can also extract the probabilities for each possible answer
-            var probs = nb.Probabilities(instance); // { 0.795, 0.205 }
-            var priors = nb.Priors;
-            var distributions = nb.Distributions;
+            return _naiveBayes.Probabilities(testData); 
         }
 
         private void CalculateDataSetSizes(IList<string[]> dataLines)

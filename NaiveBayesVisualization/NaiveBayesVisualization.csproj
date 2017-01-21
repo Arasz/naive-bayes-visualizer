@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BigChartFactory.cs" />
+    <Compile Include="ComboTableFactory.cs" />
     <Compile Include="Data\CsvDataReader.cs" />
     <Compile Include="Data\ExperimentData.cs" />
     <Compile Include="MatrixChartFactory.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="NaiveBayesVisualizerMainWindow.Designer.cs">
       <DependentUpon>NaiveBayesVisualizerMainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="PredictionTableFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="NaiveBayesVisualizerMainWindow.resx">

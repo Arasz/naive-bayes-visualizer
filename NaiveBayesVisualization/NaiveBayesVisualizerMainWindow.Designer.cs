@@ -31,18 +31,23 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NaiveBayesVisualizerMainWindow));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.loadDataButton = new System.Windows.Forms.ToolStripButton();
-            this.DistributionsPage = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.DistributionPanel = new System.Windows.Forms.Panel();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.openDataFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.PredictionSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.PriorsPanel = new System.Windows.Forms.Panel();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.DistributionPanel = new System.Windows.Forms.Panel();
+            this.DistributionsPage = new System.Windows.Forms.TabControl();
             this.toolStrip.SuspendLayout();
-            this.DistributionsPage.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PredictionSplitContainer)).BeginInit();
+            this.PredictionSplitContainer.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.DistributionsPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -65,19 +70,60 @@
             this.loadDataButton.Text = "toolStripButton1";
             this.loadDataButton.Click += new System.EventHandler(this.LoadDataFromFile);
             // 
-            // DistributionsPage
+            // openDataFileDialog
             // 
-            this.DistributionsPage.Controls.Add(this.tabPage1);
-            this.DistributionsPage.Controls.Add(this.tabPage2);
-            this.DistributionsPage.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.DistributionsPage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DistributionsPage.Location = new System.Drawing.Point(0, 25);
-            this.DistributionsPage.Multiline = true;
-            this.DistributionsPage.Name = "DistributionsPage";
-            this.DistributionsPage.SelectedIndex = 0;
-            this.DistributionsPage.Size = new System.Drawing.Size(909, 592);
-            this.DistributionsPage.TabIndex = 1;
-            this.DistributionsPage.Tag = "";
+            this.openDataFileDialog.AddExtension = false;
+            this.openDataFileDialog.FileName = "D:\\Library\\Documents\\GitHub\\Active\\naive-bayes-visualization\\Data\\Mushrooms";
+            this.openDataFileDialog.Filter = "CSV files|*.csv";
+            this.openDataFileDialog.InitialDirectory = "../../Data/";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.PredictionSplitContainer);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(901, 566);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // PredictionSplitContainer
+            // 
+            this.PredictionSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PredictionSplitContainer.Location = new System.Drawing.Point(3, 3);
+            this.PredictionSplitContainer.Name = "PredictionSplitContainer";
+            // 
+            // PredictionSplitContainer.Panel1
+            // 
+            this.PredictionSplitContainer.Panel1.AutoScroll = true;
+            this.PredictionSplitContainer.Panel1MinSize = 200;
+            // 
+            // PredictionSplitContainer.Panel2
+            // 
+            this.PredictionSplitContainer.Panel2.UseWaitCursor = true;
+            this.PredictionSplitContainer.Panel2MinSize = 200;
+            this.PredictionSplitContainer.Size = new System.Drawing.Size(895, 560);
+            this.PredictionSplitContainer.SplitterDistance = 500;
+            this.PredictionSplitContainer.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.PriorsPanel);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(901, 566);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // PriorsPanel
+            // 
+            this.PriorsPanel.Location = new System.Drawing.Point(0, 0);
+            this.PriorsPanel.Name = "PriorsPanel";
+            this.PriorsPanel.Size = new System.Drawing.Size(901, 566);
+            this.PriorsPanel.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -99,30 +145,20 @@
             this.DistributionPanel.Size = new System.Drawing.Size(901, 566);
             this.DistributionPanel.TabIndex = 0;
             // 
-            // tabPage2
+            // DistributionsPage
             // 
-            this.tabPage2.Controls.Add(this.PriorsPanel);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(901, 566);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // openDataFileDialog
-            // 
-            this.openDataFileDialog.AddExtension = false;
-            this.openDataFileDialog.FileName = "D:\\Library\\Documents\\GitHub\\Active\\naive-bayes-visualization\\Data\\Mushrooms";
-            this.openDataFileDialog.Filter = "CSV files|*.csv";
-            this.openDataFileDialog.InitialDirectory = "../../Data/";
-            // 
-            // PriorsPanel
-            // 
-            this.PriorsPanel.Location = new System.Drawing.Point(0, 0);
-            this.PriorsPanel.Name = "PriorsPanel";
-            this.PriorsPanel.Size = new System.Drawing.Size(901, 566);
-            this.PriorsPanel.TabIndex = 0;
+            this.DistributionsPage.Controls.Add(this.tabPage1);
+            this.DistributionsPage.Controls.Add(this.tabPage2);
+            this.DistributionsPage.Controls.Add(this.tabPage3);
+            this.DistributionsPage.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.DistributionsPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DistributionsPage.Location = new System.Drawing.Point(0, 25);
+            this.DistributionsPage.Multiline = true;
+            this.DistributionsPage.Name = "DistributionsPage";
+            this.DistributionsPage.SelectedIndex = 0;
+            this.DistributionsPage.Size = new System.Drawing.Size(909, 592);
+            this.DistributionsPage.TabIndex = 1;
+            this.DistributionsPage.Tag = "";
             // 
             // NaiveBayesVisualizerMainWindow
             // 
@@ -138,9 +174,12 @@
             this.Text = "NaiveBayesVisualizer";
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
-            this.DistributionsPage.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PredictionSplitContainer)).EndInit();
+            this.PredictionSplitContainer.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.DistributionsPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,15 +188,17 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.TabControl DistributionsPage;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ToolStripButton loadDataButton;
         private System.Windows.Forms.OpenFileDialog openDataFileDialog;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.Panel DistributionPanel;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel PriorsPanel;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Panel DistributionPanel;
+        private System.Windows.Forms.TabControl DistributionsPage;
+        private System.Windows.Forms.SplitContainer PredictionSplitContainer;
     }
 }
 

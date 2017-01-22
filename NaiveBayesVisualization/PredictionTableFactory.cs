@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
 using Accord.Statistics.Filters;
 
 namespace NaiveBayesVisualization
@@ -34,7 +32,6 @@ namespace NaiveBayesVisualization
                 var chart =
                     new MatrixChartFactory(columns[numRows].Values,
                         values.ToArray()).Chart;
-               // chart.Legends.Add(new Legend());
 
                 Table.Controls.Add(chart, 0, i);
             }

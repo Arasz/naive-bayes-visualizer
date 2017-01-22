@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Accord.Statistics.Filters;
 
@@ -8,7 +10,7 @@ namespace NaiveBayesVisualization
     {
         public TableLayoutPanel Table { get; }
 
-        public DistributionTableFactory(ColumnOptionCollection<Codification.Options> columns, 
+        public DistributionTableFactory(ColumnOptionCollection<Codification.Options> columns,
             double[,][] distributions,
             int numRows)
         {
@@ -20,19 +22,25 @@ namespace NaiveBayesVisualization
             var numColumns = columns[numRows].Values.Length;
             for (var j = 0; j < numColumns; j++)
             {
-                Table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+                Table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
                 for (var i = 0; i < numRows; i++)
                 {
-                    Table.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
+                    Table.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
                     var chart =
                         new MatrixChartFactory(columns[i].Values,
                             distributions[j, i]).Chart;
                     Table.Controls.Add(chart, j, i);
-                    if (j == numColumns - 1)
-                    {
-                        chart.Legends.Add(new Legend());
-                    }
                 }
+            }
+            Table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
+            for (var i = 0; i < numRows; i++)
+            {
+                var chart2 =
+                    new MatrixChartFactory(columns[i].Values,
+                        distributions[0, i]).Chart;
+                chart2.ChartAreas.First().Visible = false;
+                Table.Controls.Add(chart2, numColumns, i);
+                chart2.Legends.Add(new Legend());
             }
         }
     }

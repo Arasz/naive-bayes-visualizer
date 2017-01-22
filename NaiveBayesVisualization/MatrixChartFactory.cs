@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms.DataVisualization.Charting;
+﻿using System;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace NaiveBayesVisualization
 {
@@ -8,6 +9,7 @@ namespace NaiveBayesVisualization
 
         public MatrixChartFactory(string[] seriesArray, double[] pointsArray)
         {
+
             Chart = new Chart();
             var style = new LabelStyle {Enabled = false};
             var area = new ChartArea

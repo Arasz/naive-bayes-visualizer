@@ -53,6 +53,7 @@ namespace NaiveBayesVisualization.Data
 
             // Learn a Naive Bayes model from the examples
             _naiveBayes = learner.Learn(inputs, outputs);
+            
         }
 
         public double[] Predict(string[] testData)

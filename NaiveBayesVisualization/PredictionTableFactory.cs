@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Accord.Statistics.Filters;
@@ -24,15 +25,16 @@ namespace NaiveBayesVisualization
                 Table.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
 
                 var decision = decisions[i];
-                var values = new[]
+                var numColumns = columns[numRows].Values.Length;
+                var values = new List<double>();
+                for (var j = 0; j  <numColumns; j++)
                 {
-                    distributions[0, i][decision],
-                    distributions[1, i][decision]
-                };
+                    values.Add(distributions[j, i][decision]);
+                }
                 var chart =
                     new MatrixChartFactory(columns[numRows].Values,
-                        values).Chart;
-                chart.Legends.Add(new Legend());
+                        values.ToArray()).Chart;
+               // chart.Legends.Add(new Legend());
 
                 Table.Controls.Add(chart, 0, i);
             }

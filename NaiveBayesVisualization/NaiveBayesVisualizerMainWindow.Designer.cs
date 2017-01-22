@@ -41,6 +41,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.DistributionPanel = new System.Windows.Forms.Panel();
             this.DistributionsPage = new System.Windows.Forms.TabControl();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PredictionSplitContainer)).BeginInit();
@@ -85,7 +87,7 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(901, 566);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.Text = "predictions";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // PredictionSplitContainer
@@ -109,20 +111,21 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.PriorsPanel);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(901, 566);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "priori";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // PriorsPanel
             // 
-            this.PriorsPanel.Location = new System.Drawing.Point(0, 0);
+            this.PriorsPanel.Location = new System.Drawing.Point(0, 30);
             this.PriorsPanel.Name = "PriorsPanel";
-            this.PriorsPanel.Size = new System.Drawing.Size(901, 566);
+            this.PriorsPanel.Size = new System.Drawing.Size(901, 536);
             this.PriorsPanel.TabIndex = 0;
             // 
             // tabPage1
@@ -133,7 +136,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(901, 566);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "distributions";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // DistributionPanel
@@ -160,6 +163,23 @@
             this.DistributionsPage.TabIndex = 1;
             this.DistributionsPage.Tag = "";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(356, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(251, 24);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Priori probabilities for classes";
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(674, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(8, 8);
+            this.panel1.TabIndex = 2;
+            // 
             // NaiveBayesVisualizerMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,6 +187,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(909, 617);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.DistributionsPage);
             this.Controls.Add(this.toolStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -178,6 +199,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PredictionSplitContainer)).EndInit();
             this.PredictionSplitContainer.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.DistributionsPage.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -199,6 +221,8 @@
         private System.Windows.Forms.Panel DistributionPanel;
         private System.Windows.Forms.TabControl DistributionsPage;
         private System.Windows.Forms.SplitContainer PredictionSplitContainer;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

@@ -23,6 +23,20 @@ namespace NaiveBayesVisualization
             var result = openDataFileDialog.ShowDialog();
             if (result != DialogResult.OK) return;
 
+            CleanPanels();
+            PrepareData();
+        }
+
+        private void CleanPanels()
+        {
+            DistributionPanel.Controls.Clear();
+            PriorsPanel.Controls.Clear();
+            PredictionSplitContainer.Panel1.Controls.Clear();
+            PredictionSplitContainer.Panel2.Controls.Clear();
+        }
+
+        private void PrepareData()
+        {
             var dataReader = new CsvDataReader(openDataFileDialog.FileName);
             _experimentData = new ExperimentData(dataReader);
             _rowsCount = _experimentData.ColumnLabels.Count - 1;
@@ -31,6 +45,8 @@ namespace NaiveBayesVisualization
             var priorisChart = new BigChartFactory(
                 _experimentData.Codebook.Columns[_rowsCount].Values,
                 _experimentData.Priors).Chart;
+            priorisChart.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
+                          (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
             PriorsPanel.Controls.Add(priorisChart);
 
             DistributionPanel.Controls.Add(

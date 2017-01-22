@@ -37,11 +37,11 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.PredictionSplitContainer = new System.Windows.Forms.SplitContainer();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.PriorsPanel = new System.Windows.Forms.Panel();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.DistributionPanel = new System.Windows.Forms.Panel();
             this.DistributionsPage = new System.Windows.Forms.TabControl();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -121,8 +121,24 @@
             this.tabPage2.Text = "priori";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(356, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(251, 24);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Priori probabilities for classes";
+            // 
             // PriorsPanel
             // 
+            this.PriorsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PriorsPanel.Location = new System.Drawing.Point(0, 30);
             this.PriorsPanel.Name = "PriorsPanel";
             this.PriorsPanel.Size = new System.Drawing.Size(901, 536);
@@ -141,6 +157,9 @@
             // 
             // DistributionPanel
             // 
+            this.DistributionPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DistributionPanel.AutoScroll = true;
             this.DistributionPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.DistributionPanel.Location = new System.Drawing.Point(0, 0);
@@ -162,16 +181,6 @@
             this.DistributionsPage.Size = new System.Drawing.Size(909, 592);
             this.DistributionsPage.TabIndex = 1;
             this.DistributionsPage.Tag = "";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(356, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(251, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Priori probabilities for classes";
             // 
             // panel1
             // 

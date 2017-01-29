@@ -46,9 +46,11 @@
             this.DistributionPanel = new System.Windows.Forms.Panel();
             this.DistributionsPage = new System.Windows.Forms.TabControl();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.DistributionsFordecisionLabel = new System.Windows.Forms.Label();
             this.toolStrip.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PredictionSplitContainer)).BeginInit();
+            this.PredictionSplitContainer.Panel1.SuspendLayout();
             this.PredictionSplitContainer.Panel2.SuspendLayout();
             this.PredictionSplitContainer.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -116,6 +118,7 @@
             // PredictionSplitContainer.Panel1
             // 
             this.PredictionSplitContainer.Panel1.AutoScroll = true;
+            this.PredictionSplitContainer.Panel1.Controls.Add(this.DistributionsFordecisionLabel);
             this.PredictionSplitContainer.Panel1MinSize = 200;
             // 
             // PredictionSplitContainer.Panel2
@@ -228,6 +231,16 @@
             this.panel1.Size = new System.Drawing.Size(8, 8);
             this.panel1.TabIndex = 2;
             // 
+            // DistributionsFordecisionLabel
+            // 
+            this.DistributionsFordecisionLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.DistributionsFordecisionLabel.AutoSize = true;
+            this.DistributionsFordecisionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.DistributionsFordecisionLabel.Location = new System.Drawing.Point(170, 30);
+            this.DistributionsFordecisionLabel.Name = "DistributionsFordecisionLabel";
+            this.DistributionsFordecisionLabel.Size = new System.Drawing.Size(0, 20);
+            this.DistributionsFordecisionLabel.TabIndex = 3;
+            // 
             // NaiveBayesVisualizerMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,6 +258,8 @@
             this.toolStrip.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.PredictionSplitContainer.Panel1.ResumeLayout(false);
+            this.PredictionSplitContainer.Panel1.PerformLayout();
             this.PredictionSplitContainer.Panel2.ResumeLayout(false);
             this.PredictionSplitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PredictionSplitContainer)).EndInit();
@@ -278,6 +293,7 @@
         private System.Windows.Forms.Label DistributionsTabTitle;
         private System.Windows.Forms.Label PredictionsTabTitle;
         private System.Windows.Forms.Label decisionTitle;
+        private System.Windows.Forms.Label DistributionsFordecisionLabel;
     }
 }
 

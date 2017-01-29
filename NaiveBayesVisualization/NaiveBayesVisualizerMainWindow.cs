@@ -86,7 +86,7 @@ namespace NaiveBayesVisualization
             var comboTable = new ComboTableFactory(_experimentData.Codebook.Columns,
                 ItemChanged,
                 _rowsCount).Table;
-            comboTable.Location = new Point(0, 80);
+            comboTable.Location = new Point(0, 20);
             PredictionSplitContainer.Panel1.Controls.Add(comboTable);
         }
 
@@ -101,7 +101,7 @@ namespace NaiveBayesVisualization
                 decisions,
                 _rowsCount
             ).Table;
-            _predictionsTable.Location = new Point(190, 80);
+            _predictionsTable.Location = new Point(190, 20);
             PredictionSplitContainer.Panel1.Controls.Add(_predictionsTable);
 
             PredictionSplitContainer.Panel2.Controls.Clear();
@@ -112,7 +112,7 @@ namespace NaiveBayesVisualization
             decisionChart.Width = 400;
             decisionChart.Height = 300;
             decisionChart.Anchor = AnchorStyles.None;
-            decisionChart.Location = new Point(0, 80);
+            decisionChart.Location = new Point(0, 20);
             PredictionSplitContainer.Panel2.Controls.Add(decisionChart);            
         }
 

@@ -55,7 +55,14 @@ namespace NaiveBayesVisualization
                         distributions[0, i]).Chart;
                 chart2.ChartAreas.First().Visible = false;
                 Table.Controls.Add(chart2, numColumns, i + 1);
-                chart2.Legends.Add(new Legend());
+                var legend = new Legend("Legend1")
+                {
+                    Position =
+                        new ElementPosition(0, 0, 80F, 100F),
+                    Font = new Font("Arial", 9),
+                    Alignment = StringAlignment.Near
+                };
+                chart2.Legends.Add(legend);
             }
         }
     }

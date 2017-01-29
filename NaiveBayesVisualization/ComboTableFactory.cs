@@ -18,6 +18,16 @@ namespace NaiveBayesVisualization
                 AutoSize = true,
                 AutoSizeMode = AutoSizeMode.GrowAndShrink
             };
+            Table.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            var Title = new Label
+            {
+                Text = "Decision",
+                Font = new Font("Arial", 10),
+                BackColor = Color.Transparent,
+                Anchor = AnchorStyles.None,
+                AutoSize = true
+            };
+            Table.Controls.Add(Title, 0, 0);
             for (var i = 0; i < numRows; i++)
             {
                 Table.RowStyles.Add(new RowStyle(SizeType.Absolute, 90F));
@@ -41,7 +51,7 @@ namespace NaiveBayesVisualization
                 };
                 table.Controls.Add(label, 0, 0);
                 table.Controls.Add(comboBox, 0, 1);
-                Table.Controls.Add(table, 0, i);
+                Table.Controls.Add(table, 0, i+1);
             }
         }
     }

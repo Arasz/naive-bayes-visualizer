@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace NaiveBayesVisualization
@@ -35,7 +36,10 @@ namespace NaiveBayesVisualization
             Chart.ChartAreas.Add(area);
             // Set palette.
             Chart.Palette = ChartColorPalette.BrightPastel;
-            Chart.Legends.Add(new Legend());
+            Chart.Legends.Add(new Legend()
+            {
+                Font = new Font("Arial", 10)
+            });
             // Add series.
             for (var i = 0; i < seriesArray.Length; i++)
             {

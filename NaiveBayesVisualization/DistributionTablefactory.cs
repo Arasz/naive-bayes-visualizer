@@ -25,8 +25,9 @@ namespace NaiveBayesVisualization
             {
                 var label = new Label
                 {
-                    Text = columns[numRows].Values[i],
-                    Font = new Font("Arial", 10)
+                    Text = $"y = {columns[numRows].Values[i]}",
+                    Font = new Font("Arial", 12),
+                    Anchor = AnchorStyles.Bottom
                 };
                 Table.Controls.Add(label, i, 0);
             }
@@ -38,10 +39,11 @@ namespace NaiveBayesVisualization
                 for (var i = 0; i < numRows; i++)
                 {
                     Table.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
+
                     var chart =
                         new MatrixChartFactory(columns[i].Values,
                             distributions[j, i]).Chart;
-                    Table.Controls.Add(chart, j, i+1);
+                    Table.Controls.Add(chart, j, i + 1);
                 }
             }
             Table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
@@ -51,7 +53,7 @@ namespace NaiveBayesVisualization
                     new MatrixChartFactory(columns[i].Values,
                         distributions[0, i]).Chart;
                 chart2.ChartAreas.First().Visible = false;
-                Table.Controls.Add(chart2, numColumns, i+1);
+                Table.Controls.Add(chart2, numColumns, i + 1);
                 chart2.Legends.Add(new Legend());
             }
         }

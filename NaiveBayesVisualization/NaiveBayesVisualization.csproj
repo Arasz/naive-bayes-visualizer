@@ -65,6 +65,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -80,14 +81,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BigChartFactory.cs" />
+    <Compile Include="ComboTableFactory.cs" />
     <Compile Include="Data\CsvDataReader.cs" />
     <Compile Include="Data\ExperimentData.cs" />
+    <Compile Include="MatrixChartFactory.cs" />
+    <Compile Include="DistributionTableFactory.cs" />
     <Compile Include="NaiveBayesVisualizerMainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NaiveBayesVisualizerMainWindow.Designer.cs">
       <DependentUpon>NaiveBayesVisualizerMainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="PredictionTableFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="NaiveBayesVisualizerMainWindow.resx">

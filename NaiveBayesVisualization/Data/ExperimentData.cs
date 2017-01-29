@@ -2,57 +2,38 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using Accord.MachineLearning.Bayes;
+using Accord.Math;
+using Accord.Statistics.Filters;
 
 namespace NaiveBayesVisualization.Data
 {
     public class ExperimentData
     {
         private readonly CsvDataReader _dataReader;
-        private readonly double _testDataPercent;
         private int _loadedDataSize;
-        private readonly Random _randomGenerator;
-        private DataTable _testData;
-        private int _testDataSize;
-        private int _testInsertCounter;
-        private DataTable _trainData;
 
-        public ExperimentData(CsvDataReader dataReader, double testDataPercent = 0.3, int loadedDataSize = int.MaxValue)
+        public DataTable TrainData { get; }
+        public Codification Codebook { get; private set; }
+        public List<string> ColumnLabels { get; }
+        private NaiveBayes _naiveBayes;
+        public double[,][] Distributions => _naiveBayes.Distributions;
+        public double[] Priors => _naiveBayes.Priors;
+
+        private string[] _lastLine;
+
+
+        public ExperimentData(CsvDataReader dataReader, int loadedDataSize = int.MaxValue)
         {
             _dataReader = dataReader;
             _loadedDataSize = loadedDataSize;
-            _testDataPercent = testDataPercent;
-            _randomGenerator = new Random();
+            ColumnLabels = new List<string>();
+            TrainData = new DataTable("TrainData");
+            Load();
         }
 
-        /// <summary>
-        ///     Lazy loaded test data
-        /// </summary>
-        public DataTable TestData
+        private void Load()
         {
-            get
-            {
-                if (_testData == null)
-                    Load();
-                return _testData;
-            }
-        }
-
-        public DataTable TrainData
-        {
-            get
-            {
-                if (_trainData == null)
-                    Load();
-                return _trainData;
-            }
-        }
-
-        public void Load()
-        {
-            _testData = new DataTable("TestData");
-
-            _trainData = new DataTable("TrainData");
-
             var dataLines = _dataReader.ReadLines();
 
             CalculateDataSetSizes(dataLines);
@@ -60,46 +41,58 @@ namespace NaiveBayesVisualization.Data
             CreateColumns();
 
             foreach (var dataLine in dataLines.Take(_loadedDataSize))
-                RandomlyInsertData(dataLine);
+                InsertRowToTable(dataLine, TrainData);
+
+            Codebook = new Codification(TrainData, ColumnLabels.ToArray());
+            var symbols = Codebook.Apply(TrainData);
+            var inputs = symbols.ToArray<int>(ColumnLabels.GetRange(0, ColumnLabels.Count - 1).ToArray());
+            var outputs = symbols.ToArray<int>(ColumnLabels[ColumnLabels.Count - 1]);
+
+            // Create a new Naive Bayes learning
+            var learner = new NaiveBayesLearning();
+
+            // Learn a Naive Bayes model from the examples
+            _naiveBayes = learner.Learn(inputs, outputs);
+            
+        }
+
+        public double[] Predict(string[] testData)
+        {
+            return _naiveBayes.Probabilities(TranslateDecisions(testData));
         }
 
         private void CalculateDataSetSizes(IList<string[]> dataLines)
         {
             if (dataLines.Count < _loadedDataSize)
                 _loadedDataSize = dataLines.Count;
-
-            _testDataSize = (int) (_loadedDataSize * _testDataPercent);
         }
 
         private void CreateColumns()
         {
             foreach (var columnName in _dataReader.Headers)
             {
-                _testData.Columns.Add(columnName);
-                _trainData.Columns.Add(columnName);
+                TrainData.Columns.Add(columnName);
+                ColumnLabels.Add(columnName);
             }
         }
 
         private void InsertRowToTable(string[] dataLine, DataTable dataTable)
         {
-            var row = dataTable.NewRow();
-            row.ItemArray = dataLine;
-            dataTable.Rows.Add(row);
+            dataTable.Rows.Add
+            (
+                dataLine
+            );
+            _lastLine = dataLine;
         }
 
-        private void RandomlyInsertData(string[] dataLine)
+        public int[] TranslateDecisions(string[] decisions)
         {
-            var randomNumber = _randomGenerator.Next(0, 2);
+            return Codebook.Translate(decisions);
+        }
 
-            if (randomNumber == 0 && _testDataSize >= _testInsertCounter)
-            {
-                _testInsertCounter++;
-                InsertRowToTable(dataLine, _testData);
-            }
-            else
-            {
-                InsertRowToTable(dataLine, _trainData);
-            }
+        public string[] GenerateTestDecisions()
+        {
+            return _lastLine;
         }
     }
 }

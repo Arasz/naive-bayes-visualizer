@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms.DataVisualization.Charting;
+﻿using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace NaiveBayesVisualization
 {
@@ -11,7 +12,8 @@ namespace NaiveBayesVisualization
             Chart = new Chart
             {
                 Width = 600,
-                Height = 500
+                Height = 500,
+                Anchor = AnchorStyles.None
             };
             var style = new LabelStyle {Enabled = false};
             var area = new ChartArea

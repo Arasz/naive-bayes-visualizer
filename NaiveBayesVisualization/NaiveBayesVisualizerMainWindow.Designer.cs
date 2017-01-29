@@ -35,19 +35,21 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.PredictionsTabTitle = new System.Windows.Forms.Label();
             this.PredictionSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.decisionTitle = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.ProriTabTitle = new System.Windows.Forms.Label();
             this.PriorsPanel = new System.Windows.Forms.Panel();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.DistributionsTabTitle = new System.Windows.Forms.Label();
             this.DistributionPanel = new System.Windows.Forms.Panel();
             this.DistributionsPage = new System.Windows.Forms.TabControl();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.DistributionsTabTitle = new System.Windows.Forms.Label();
-            this.PredictionsTabTitle = new System.Windows.Forms.Label();
             this.toolStrip.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PredictionSplitContainer)).BeginInit();
+            this.PredictionSplitContainer.Panel2.SuspendLayout();
             this.PredictionSplitContainer.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -93,10 +95,22 @@
             this.tabPage3.Text = "predictions";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // PredictionsTabTitle
+            // 
+            this.PredictionsTabTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.PredictionsTabTitle.AutoSize = true;
+            this.PredictionsTabTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PredictionsTabTitle.Location = new System.Drawing.Point(380, 3);
+            this.PredictionsTabTitle.Name = "PredictionsTabTitle";
+            this.PredictionsTabTitle.Size = new System.Drawing.Size(103, 24);
+            this.PredictionsTabTitle.TabIndex = 2;
+            this.PredictionsTabTitle.Text = "Predictions";
+            // 
             // PredictionSplitContainer
             // 
             this.PredictionSplitContainer.BackColor = System.Drawing.Color.Transparent;
-            this.PredictionSplitContainer.Location = new System.Drawing.Point(3, 32);
+            this.PredictionSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PredictionSplitContainer.Location = new System.Drawing.Point(3, 3);
             this.PredictionSplitContainer.Name = "PredictionSplitContainer";
             // 
             // PredictionSplitContainer.Panel1
@@ -106,11 +120,23 @@
             // 
             // PredictionSplitContainer.Panel2
             // 
+            this.PredictionSplitContainer.Panel2.Controls.Add(this.decisionTitle);
             this.PredictionSplitContainer.Panel2.UseWaitCursor = true;
             this.PredictionSplitContainer.Panel2MinSize = 200;
-            this.PredictionSplitContainer.Size = new System.Drawing.Size(898, 560);
-            this.PredictionSplitContainer.SplitterDistance = 501;
+            this.PredictionSplitContainer.Size = new System.Drawing.Size(895, 560);
+            this.PredictionSplitContainer.SplitterDistance = 500;
             this.PredictionSplitContainer.TabIndex = 0;
+            // 
+            // decisionTitle
+            // 
+            this.decisionTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.decisionTitle.AutoSize = true;
+            this.decisionTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.decisionTitle.Location = new System.Drawing.Point(159, 30);
+            this.decisionTitle.Name = "decisionTitle";
+            this.decisionTitle.Size = new System.Drawing.Size(0, 24);
+            this.decisionTitle.TabIndex = 3;
+            this.decisionTitle.UseWaitCursor = true;
             // 
             // tabPage2
             // 
@@ -157,6 +183,17 @@
             this.tabPage1.Text = "distributions";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // DistributionsTabTitle
+            // 
+            this.DistributionsTabTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.DistributionsTabTitle.AutoSize = true;
+            this.DistributionsTabTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DistributionsTabTitle.Location = new System.Drawing.Point(386, 3);
+            this.DistributionsTabTitle.Name = "DistributionsTabTitle";
+            this.DistributionsTabTitle.Size = new System.Drawing.Size(111, 24);
+            this.DistributionsTabTitle.TabIndex = 2;
+            this.DistributionsTabTitle.Text = "Distributions";
+            // 
             // DistributionPanel
             // 
             this.DistributionPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -191,28 +228,6 @@
             this.panel1.Size = new System.Drawing.Size(8, 8);
             this.panel1.TabIndex = 2;
             // 
-            // DistributionsTabTitle
-            // 
-            this.DistributionsTabTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.DistributionsTabTitle.AutoSize = true;
-            this.DistributionsTabTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DistributionsTabTitle.Location = new System.Drawing.Point(386, 3);
-            this.DistributionsTabTitle.Name = "DistributionsTabTitle";
-            this.DistributionsTabTitle.Size = new System.Drawing.Size(111, 24);
-            this.DistributionsTabTitle.TabIndex = 2;
-            this.DistributionsTabTitle.Text = "Distributions";
-            // 
-            // PredictionsTabTitle
-            // 
-            this.PredictionsTabTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.PredictionsTabTitle.AutoSize = true;
-            this.PredictionsTabTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PredictionsTabTitle.Location = new System.Drawing.Point(380, 3);
-            this.PredictionsTabTitle.Name = "PredictionsTabTitle";
-            this.PredictionsTabTitle.Size = new System.Drawing.Size(103, 24);
-            this.PredictionsTabTitle.TabIndex = 2;
-            this.PredictionsTabTitle.Text = "Predictions";
-            // 
             // NaiveBayesVisualizerMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,6 +245,8 @@
             this.toolStrip.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.PredictionSplitContainer.Panel2.ResumeLayout(false);
+            this.PredictionSplitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PredictionSplitContainer)).EndInit();
             this.PredictionSplitContainer.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -260,6 +277,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label DistributionsTabTitle;
         private System.Windows.Forms.Label PredictionsTabTitle;
+        private System.Windows.Forms.Label decisionTitle;
     }
 }
 

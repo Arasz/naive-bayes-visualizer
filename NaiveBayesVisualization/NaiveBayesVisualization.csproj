@@ -81,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttributeLabelsTable.cs" />
     <Compile Include="BigChartFactory.cs" />
     <Compile Include="ComboTableFactory.cs" />
     <Compile Include="Data\CsvDataReader.cs" />

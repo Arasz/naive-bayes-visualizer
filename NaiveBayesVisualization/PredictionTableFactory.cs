@@ -20,7 +20,7 @@ namespace NaiveBayesVisualization
 
             for (var i = 0; i < numRows; i++)
             {
-                Table.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
+                Table.RowStyles.Add(new RowStyle(SizeType.Absolute, 90F));
 
                 var decision = decisions[i];
                 var numColumns = columns[numRows].Values.Length;

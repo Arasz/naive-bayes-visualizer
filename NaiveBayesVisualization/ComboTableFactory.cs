@@ -20,20 +20,24 @@ namespace NaiveBayesVisualization
             };
             for (var i = 0; i < numRows; i++)
             {
-                Table.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
+                Table.RowStyles.Add(new RowStyle(SizeType.Absolute, 90F));
                 var table = new TableLayoutPanel();
                 table.RowStyles.Add(new RowStyle(SizeType.Percent, 0.5F));
                 table.RowStyles.Add(new RowStyle(SizeType.Percent, 0.5F));
                 var comboBox = new ComboBox
                 {
                     DataSource = columns[i].Values,
-                    Tag = $"{i}"
+                    Tag = $"{i}",
+                    Font = new Font("Arial", 9),
+                    Anchor = AnchorStyles.Left|AnchorStyles.Top
                 };
                 comboBox.SelectedIndexChanged += itemChanged;
                 var label = new Label
                 {
                     Text = columns[i].ColumnName,
-                    BackColor = Color.Transparent
+                    BackColor = Color.Transparent,
+                    Font = new Font("Arial", 9),
+                    Anchor = AnchorStyles.Left|AnchorStyles.Bottom
                 };
                 table.Controls.Add(label, 0, 0);
                 table.Controls.Add(comboBox, 0, 1);

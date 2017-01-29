@@ -20,14 +20,15 @@ namespace NaiveBayesVisualization
                 AutoSizeMode = AutoSizeMode.GrowAndShrink
             };
             var numColumns = columns[numRows].Values.Length;
-            Table.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            Table.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             for (var i = 0; i < numColumns; i++)
             {
                 var label = new Label
                 {
-                    Text = $"y = {columns[numRows].Values[i]}",
-                    Font = new Font("Arial", 12),
-                    Anchor = AnchorStyles.Bottom
+                    Text = "y=" + columns[numRows].Values[i],
+                    Font = new Font("Arial", 10),
+                    Anchor = AnchorStyles.Bottom,
+                    Padding = new Padding(0)
                 };
                 Table.Controls.Add(label, i, 0);
             }
@@ -35,7 +36,7 @@ namespace NaiveBayesVisualization
 
             for (var j = 0; j < numColumns; j++)
             {
-                Table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
+                Table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 220F));
                 for (var i = 0; i < numRows; i++)
                 {
                     Table.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));

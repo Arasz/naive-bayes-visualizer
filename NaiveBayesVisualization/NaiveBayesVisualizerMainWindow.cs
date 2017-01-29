@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Accord.Statistics.Filters;
 using NaiveBayesVisualization.Data;
 
 namespace NaiveBayesVisualization
@@ -51,14 +52,25 @@ namespace NaiveBayesVisualization
                           (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
             PriorsPanel.Controls.Add(priorisChart);
 
-            DistributionPanel.Controls.Add(
-                new DistributionTableFactory(
-                    _experimentData.Codebook.Columns,
-                    _experimentData.Distributions,
-                    _rowsCount
-                ).Table);
+            LoadDistributionsTable();
             LoadComboBoxes();
             LoadPredictions();
+        }
+
+        private void LoadDistributionsTable()
+        {
+            var attributeLabelsTable = new AttributeLabelsTable(
+                _experimentData.Codebook.Columns, 
+                _rowsCount)
+                .Table;
+            DistributionPanel.Controls.Add(attributeLabelsTable);
+            var distTable = new DistributionTableFactory(
+                _experimentData.Codebook.Columns,
+                _experimentData.Distributions,
+                _rowsCount
+            ).Table;
+            distTable.Location = new Point(120, 0);
+            DistributionPanel.Controls.Add(distTable);
         }
 
         private void ApplyTabTitles(string fileName)
@@ -74,6 +86,7 @@ namespace NaiveBayesVisualization
             var comboTable = new ComboTableFactory(_experimentData.Codebook.Columns,
                 ItemChanged,
                 _rowsCount).Table;
+            comboTable.Location = new Point(0, 80);
             PredictionSplitContainer.Panel1.Controls.Add(comboTable);
         }
 
@@ -88,16 +101,19 @@ namespace NaiveBayesVisualization
                 decisions,
                 _rowsCount
             ).Table;
-            _predictionsTable.Location = new Point(190, 0);
+            _predictionsTable.Location = new Point(190, 80);
             PredictionSplitContainer.Panel1.Controls.Add(_predictionsTable);
 
             PredictionSplitContainer.Panel2.Controls.Clear();
             var probabilities = _experimentData.Predict(_decisions);
             var decisionChart = new BigChartFactory(_experimentData.Codebook.Columns[_rowsCount].Values,
                 probabilities).Chart;
-            decisionChart.Width = 300;
+            decisionChart.Titles.Add($"Decision: {_experimentData.GetDecisionLabel(probabilities)}");
+            decisionChart.Width = 400;
             decisionChart.Height = 300;
-            PredictionSplitContainer.Panel2.Controls.Add(decisionChart);
+            decisionChart.Anchor = AnchorStyles.None;
+            decisionChart.Location = new Point(0, 80);
+            PredictionSplitContainer.Panel2.Controls.Add(decisionChart);            
         }
 
 

@@ -94,5 +94,12 @@ namespace NaiveBayesVisualization.Data
         {
             return _lastLine;
         }
+
+        public string GetDecisionLabel(double[] probabilities)
+        {
+            var maxProb = probabilities.Max();
+            var index = probabilities.IndexOf(maxProb);
+            return Codebook.Columns[Codebook.Columns.Count-1].Values[index];
+        }
     }
 }

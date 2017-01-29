@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using Accord.Statistics.Filters;
 using NaiveBayesVisualization.Data;
 
 namespace NaiveBayesVisualization
@@ -68,7 +67,7 @@ namespace NaiveBayesVisualization
                 _experimentData.Distributions,
                 _rowsCount
             ).Table;
-            distTable.Location = new Point(120, 0);
+            distTable.Location = new Point(150, 0);
             DistributionPanel.Controls.Add(distTable);
         }
 

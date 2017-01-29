@@ -20,8 +20,6 @@ namespace NaiveBayesVisualization.Data
         public double[,][] Distributions => _naiveBayes.Distributions;
         public double[] Priors => _naiveBayes.Priors;
 
-        private string[] _lastLine;
-
 
         public ExperimentData(CsvDataReader dataReader, int loadedDataSize = int.MaxValue)
         {
@@ -82,7 +80,6 @@ namespace NaiveBayesVisualization.Data
             (
                 dataLine
             );
-            _lastLine = dataLine;
         }
 
         public int[] TranslateDecisions(string[] decisions)
@@ -92,7 +89,12 @@ namespace NaiveBayesVisualization.Data
 
         public string[] GenerateTestDecisions()
         {
-            return _lastLine;
+            var decision = new string[ColumnLabels.Count];
+            for (var i = 0; i < ColumnLabels.Count; i++)
+            {
+                decision[i] = Codebook.Columns[i].Values[0];
+            }
+            return decision;
         }
 
         public string GetDecisionLabel(double[] probabilities)

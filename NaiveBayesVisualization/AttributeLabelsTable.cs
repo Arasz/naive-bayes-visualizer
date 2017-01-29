@@ -24,8 +24,9 @@ namespace NaiveBayesVisualization
                 var label = new Label
                 {
                     Text = $"P({columns[i].ColumnName}|y)",
-                    Font = new Font("Arial", 10),
-                    BackColor = Color.Transparent
+                    Font = new Font("Arial", 9),
+                    BackColor = Color.Transparent,
+                    AutoSize = true
                 };
                 Table.Controls.Add(label, 0, i+1);
             }

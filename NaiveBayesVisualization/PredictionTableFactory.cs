@@ -42,7 +42,7 @@ namespace NaiveBayesVisualization
                 var chart =
                     new MatrixChartFactory(columns[numRows].Values,
                         values.ToArray()).Chart;
-
+                chart.Titles.Add($"P({columns[i].ColumnName}={columns[i].Values[decision]}|y)");
                 Table.Controls.Add(chart, 0, i+1);
             }
         }

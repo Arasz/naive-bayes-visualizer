@@ -48,8 +48,7 @@ namespace NaiveBayesVisualization
             var priorisChart = new BigChartFactory(
                 _experimentData.Codebook.Columns[_rowsCount].Values,
                 _experimentData.Priors).Chart;
-            priorisChart.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
-                          (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
+            priorisChart.Anchor = AnchorStyles.None;
             PriorsPanel.Controls.Add(priorisChart);
 
             LoadDistributionsTable();

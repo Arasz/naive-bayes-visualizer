@@ -169,6 +169,7 @@
             this.PriorsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PriorsPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.PriorsPanel.Location = new System.Drawing.Point(0, 30);
             this.PriorsPanel.Name = "PriorsPanel";
             this.PriorsPanel.Size = new System.Drawing.Size(901, 536);

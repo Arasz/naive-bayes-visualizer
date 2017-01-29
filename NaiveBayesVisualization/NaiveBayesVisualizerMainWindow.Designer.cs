@@ -37,12 +37,14 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.PredictionSplitContainer = new System.Windows.Forms.SplitContainer();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
+            this.ProriTabTitle = new System.Windows.Forms.Label();
             this.PriorsPanel = new System.Windows.Forms.Panel();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.DistributionPanel = new System.Windows.Forms.Panel();
             this.DistributionsPage = new System.Windows.Forms.TabControl();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.DistributionsTabTitle = new System.Windows.Forms.Label();
+            this.PredictionsTabTitle = new System.Windows.Forms.Label();
             this.toolStrip.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PredictionSplitContainer)).BeginInit();
@@ -81,6 +83,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.PredictionsTabTitle);
             this.tabPage3.Controls.Add(this.PredictionSplitContainer);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -92,8 +95,8 @@
             // 
             // PredictionSplitContainer
             // 
-            this.PredictionSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PredictionSplitContainer.Location = new System.Drawing.Point(3, 3);
+            this.PredictionSplitContainer.BackColor = System.Drawing.Color.Transparent;
+            this.PredictionSplitContainer.Location = new System.Drawing.Point(3, 32);
             this.PredictionSplitContainer.Name = "PredictionSplitContainer";
             // 
             // PredictionSplitContainer.Panel1
@@ -105,13 +108,13 @@
             // 
             this.PredictionSplitContainer.Panel2.UseWaitCursor = true;
             this.PredictionSplitContainer.Panel2MinSize = 200;
-            this.PredictionSplitContainer.Size = new System.Drawing.Size(895, 560);
-            this.PredictionSplitContainer.SplitterDistance = 500;
+            this.PredictionSplitContainer.Size = new System.Drawing.Size(898, 560);
+            this.PredictionSplitContainer.SplitterDistance = 501;
             this.PredictionSplitContainer.TabIndex = 0;
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.ProriTabTitle);
             this.tabPage2.Controls.Add(this.PriorsPanel);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -121,18 +124,16 @@
             this.tabPage2.Text = "priori";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // ProriTabTitle
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(356, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(251, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Priori probabilities for classes";
+            this.ProriTabTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ProriTabTitle.AutoSize = true;
+            this.ProriTabTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProriTabTitle.Location = new System.Drawing.Point(356, 3);
+            this.ProriTabTitle.Name = "ProriTabTitle";
+            this.ProriTabTitle.Size = new System.Drawing.Size(251, 24);
+            this.ProriTabTitle.TabIndex = 1;
+            this.ProriTabTitle.Text = "Priori probabilities for classes";
             // 
             // PriorsPanel
             // 
@@ -146,6 +147,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.DistributionsTabTitle);
             this.tabPage1.Controls.Add(this.DistributionPanel);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -162,9 +164,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DistributionPanel.AutoScroll = true;
             this.DistributionPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.DistributionPanel.Location = new System.Drawing.Point(0, 0);
+            this.DistributionPanel.Location = new System.Drawing.Point(4, 30);
             this.DistributionPanel.Name = "DistributionPanel";
-            this.DistributionPanel.Size = new System.Drawing.Size(901, 566);
+            this.DistributionPanel.Size = new System.Drawing.Size(901, 536);
             this.DistributionPanel.TabIndex = 0;
             // 
             // DistributionsPage
@@ -189,6 +191,28 @@
             this.panel1.Size = new System.Drawing.Size(8, 8);
             this.panel1.TabIndex = 2;
             // 
+            // DistributionsTabTitle
+            // 
+            this.DistributionsTabTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.DistributionsTabTitle.AutoSize = true;
+            this.DistributionsTabTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DistributionsTabTitle.Location = new System.Drawing.Point(386, 3);
+            this.DistributionsTabTitle.Name = "DistributionsTabTitle";
+            this.DistributionsTabTitle.Size = new System.Drawing.Size(111, 24);
+            this.DistributionsTabTitle.TabIndex = 2;
+            this.DistributionsTabTitle.Text = "Distributions";
+            // 
+            // PredictionsTabTitle
+            // 
+            this.PredictionsTabTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.PredictionsTabTitle.AutoSize = true;
+            this.PredictionsTabTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PredictionsTabTitle.Location = new System.Drawing.Point(380, 3);
+            this.PredictionsTabTitle.Name = "PredictionsTabTitle";
+            this.PredictionsTabTitle.Size = new System.Drawing.Size(103, 24);
+            this.PredictionsTabTitle.TabIndex = 2;
+            this.PredictionsTabTitle.Text = "Predictions";
+            // 
             // NaiveBayesVisualizerMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -205,11 +229,13 @@
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PredictionSplitContainer)).EndInit();
             this.PredictionSplitContainer.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.DistributionsPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -230,8 +256,10 @@
         private System.Windows.Forms.Panel DistributionPanel;
         private System.Windows.Forms.TabControl DistributionsPage;
         private System.Windows.Forms.SplitContainer PredictionSplitContainer;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ProriTabTitle;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label DistributionsTabTitle;
+        private System.Windows.Forms.Label PredictionsTabTitle;
     }
 }
 

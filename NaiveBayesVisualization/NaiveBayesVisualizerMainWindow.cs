@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using NaiveBayesVisualization.Data;
 
@@ -39,6 +40,7 @@ namespace NaiveBayesVisualization
         {
             var dataReader = new CsvDataReader(openDataFileDialog.FileName);
             _experimentData = new ExperimentData(dataReader);
+            ApplyTabTitles(openDataFileDialog.FileName);
             _rowsCount = _experimentData.ColumnLabels.Count - 1;
             _decisions = _experimentData.GenerateTestDecisions();
 
@@ -57,6 +59,14 @@ namespace NaiveBayesVisualization
                 ).Table);
             LoadComboBoxes();
             LoadPredictions();
+        }
+
+        private void ApplyTabTitles(string fileName)
+        {
+            var datasetName = fileName.Split('\\').Last().Split('.').First();
+            DistributionsTabTitle.Text = $"{datasetName} dataset - distributions";
+            ProriTabTitle.Text = $"{datasetName} dataset - priori probabilities for classes";
+            PredictionsTabTitle.Text = $"{datasetName} dataset - predictions";
         }
 
         private void LoadComboBoxes()
@@ -78,7 +88,7 @@ namespace NaiveBayesVisualization
                 decisions,
                 _rowsCount
             ).Table;
-            _predictionsTable.Location = new Point(160, 0);
+            _predictionsTable.Location = new Point(190, 0);
             PredictionSplitContainer.Panel1.Controls.Add(_predictionsTable);
 
             PredictionSplitContainer.Panel2.Controls.Clear();

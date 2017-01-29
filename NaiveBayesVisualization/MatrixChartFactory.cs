@@ -17,11 +17,10 @@ namespace NaiveBayesVisualization
             {
                 AxisY =
                 {
-                    Interval = 2.0,
+                    Interval = 0.25,
                     Maximum = 1.0,
                     Minimum = 0.0,
-                    LabelAutoFitStyle = LabelAutoFitStyles.None,
-                    LabelStyle = style
+                    LabelAutoFitStyle = LabelAutoFitStyles.None
                 },
                 AxisX =
                 {
